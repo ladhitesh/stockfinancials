@@ -43,7 +43,7 @@ jobs:
           mkdir -p dist
           echo "some content" > dist/output.txt
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: DailyPrices.txt
         path: dist
