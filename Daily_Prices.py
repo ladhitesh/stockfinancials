@@ -8,6 +8,7 @@ Created on Sun May  7 13:38:06 2023
 import yfinance as yf
 import pandas as pd
 from pandas.tseries.offsets import BDay
+from datetime import datetime
 
 # Load Tickers and dates from file
 #tkrs=pd.read_excel(r'exlConfig.xlsx',sheet_name='Config',usecols='B:B')
@@ -31,8 +32,8 @@ else:
     dates
     start_date = dates['StartDate'].tolist()
     end_date = dates['EndDate'].tolist()
-    start_date = start_date[0].strftime('%Y-%m-%d')    
-    end_date = end_date[0].strftime('%Y-%m-%d')   
+    start_date = datetime.strptime(start_date[0], '%d-%m-%Y').strftime('%Y-%m-%d')    
+    end_date = datetime.strptime(end_date[0], '%d-%m-%Y').strftime('%Y-%m-%d')   
 
 i=0
 
