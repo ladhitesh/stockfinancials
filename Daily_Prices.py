@@ -10,8 +10,10 @@ import pandas as pd
 from pandas.tseries.offsets import BDay
 
 # Load Tickers and dates from file
-tkrs=pd.read_excel(r'exlConfig.xlsx',sheet_name='Config',usecols='B:B')
-dates=pd.read_excel(r'exlConfig.xlsx',sheet_name='Config',nrows=1,usecols='F:H')
+#tkrs=pd.read_excel(r'exlConfig.xlsx',sheet_name='Config',usecols='B:B')
+#dates=pd.read_excel(r'exlConfig.xlsx',sheet_name='Config',nrows=1,usecols='F:H')
+tkrs=pd.read_csv(r'DailyPricesConfig.csv',usecols=['Tickers'])
+dates=pd.read_csv(r'DailyPricesConfig.csv',nrows=1,usecols=['StartDate','EndDate','Override'])
 tkrs=tkrs['Tickers'].values.tolist()
 #print(tkrs)
 overRide=dates['Override'].values.tolist()
