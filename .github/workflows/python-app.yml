@@ -7,11 +7,11 @@ on:
   workflow_dispatch: 
     inputs:
       start_date:
-        description: Start Date
+        description: Start Date (mm-dd-yyyy)
         required: true
         type: string
       end_date:
-        description: End Date
+        description: End Date (mm-dd-yyyy)
         required: true
         type: string
   
@@ -47,7 +47,7 @@ jobs:
       run: mkdir -p dist
     - name: Create Stock Financials Artifact
       run: |
-          python Daily_Prices.py
+          python Daily_Prices.py ${{inputs.start_date}} ${{inputs.end_date}}
           mv DailyPrices.xlsx dist/DailyPrices_$(date +%d-%m-%Y_%H%M%S).xlsx
     - name: Upload artifact
       uses: actions/upload-artifact@v4
