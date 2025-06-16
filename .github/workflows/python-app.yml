@@ -53,4 +53,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: DailyPrices.xlsx
-        path: dist/[DailyPrices].*
+        path: dist/DailyPrices*.xlsx
