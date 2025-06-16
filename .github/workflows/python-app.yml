@@ -42,8 +42,14 @@ jobs:
           # Your build and test commands here
           mkdir -p dist
           echo "some content" > dist/output.txt
+    - name: Create Stock Financials Artifact
+      run: |
+          # Your build and test commands here
+          mkdir -p dist
+          python Daily_Prices.py
+          mv DailyPrices.xlsx dist/DailyPrices.xlsx
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: DailyPrices.txt
+        name: DailyPrices.xlsx
         path: dist
