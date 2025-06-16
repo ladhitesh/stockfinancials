@@ -5,6 +5,15 @@ name: Stock Financials Application
 run-name: Generating Stock Financials. Run number - ${{github.run_number}}
 on:
   workflow_dispatch: 
+    inputs:
+      start_date:
+        description: Start Date
+        required: true
+        type: string
+      end_date:
+        description: End Date
+        required: true
+        type: string
   
 permissions:
   contents: read
