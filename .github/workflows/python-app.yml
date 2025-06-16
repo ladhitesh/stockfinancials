@@ -6,9 +6,7 @@ name: Python application
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    paths: [ 'exlConfig.xlsx' ]
 permissions:
   contents: read
 
@@ -43,9 +41,11 @@ jobs:
           mkdir -p dist
           echo "some content" > dist/output.txt
     - name: Create Stock Financials Artifact
-      run: python Daily_Prices.py
+      run: |
+          python Daily_Prices.py
+          mv DailyPrices.xlsx dist/DailyPrices_$(date +%d-%m-%Y_%H%M%S).xlsx
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: DailyPrices.xlsx
-        path: .
+        name: StockFinancials.zip
+        path: dist
