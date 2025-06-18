@@ -28,7 +28,7 @@ jupyter_core==5.8.1
 lxml==5.4.0
 matplotlib-inline==0.1.7
 multitasking==0.0.9
-nest_asyncio==1.6.0
+nest-asyncio==1.6.0
 numpy==2.3.0
 openpyxl==3.1.5
 packaging==25.0
@@ -37,7 +37,6 @@ parso==0.8.4
 peewee==3.18.1
 pexpect==4.9.0
 pickleshare==0.7.5
-pip==25.1.1
 platformdirs==4.3.8
 prompt_toolkit==3.0.51
 protobuf==5.29.3
@@ -55,7 +54,7 @@ requests==2.32.4
 six==1.17.0
 soupsieve==2.7
 spyder-kernels==3.0.5
-stack_data==0.6.3
+stack-data==0.6.3
 tornado==6.5.1
 traitlets==5.14.3
 typing_extensions==4.14.0

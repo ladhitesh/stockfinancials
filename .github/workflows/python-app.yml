@@ -6,6 +6,11 @@ run-name: Generating Stock Financials.(${{ inputs.start_date }} to ${{ inputs.en
 on:
   workflow_dispatch: 
     inputs:
+      script:
+        type: choice
+        description: Select script to run
+        options:
+        - dailyprices
       start_date:
         description: Start Date (mm-dd-yyyy)
         required: true
@@ -52,5 +57,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: StockFinancials
-        path: dist
+        name: DailyPrices
+        path: dist/DailyPrices*.xlsx

@@ -17,14 +17,14 @@ import sys
 tkrs=pd.read_csv(r'DailyPricesConfig.csv',usecols=['Tickers'])
 dates=pd.read_csv(r'DailyPricesConfig.csv',nrows=1,usecols=['StartDate','EndDate','Override'])
 tkrs=tkrs['Tickers'].values.tolist()
+#tkrs=['TCS.NS','INFY.NS']
 #print(tkrs)
 overRide=dates['Override'].values.tolist()
 overRide=overRide[0]
 current_date = pd.Timestamp.now().normalize()
 # Determine the dates for which data has to be downloaded
-arg1 = sys.argv[1]
-arg2 = sys.argv[2]
-if arg1 == "":
+
+if len(sys.argv) < 3:
     if overRide.upper()=='Y':
         last_working_date = current_date - BDay(0)    
         last_working_date=last_working_date.strftime('%Y-%m-%d')    
@@ -39,9 +39,10 @@ if arg1 == "":
         start_date = datetime.strptime(start_date[0], '%d-%m-%Y').strftime('%Y-%m-%d')    
         end_date = datetime.strptime(end_date[0], '%d-%m-%Y').strftime('%Y-%m-%d')   
 else:
-        start_date = datetime.strptime(arg1, '%d-%m-%Y').strftime('%Y-%m-%d')    
-        end_date = datetime.strptime(arg2, '%d-%m-%Y').strftime('%Y-%m-%d')      
-
+		arg1 = sys.argv[1]
+		arg2 = sys.argv[2]        
+		start_date = datetime.strptime(arg1, '%d-%m-%Y').strftime('%Y-%m-%d')    
+		end_date = datetime.strptime(arg2, '%d-%m-%Y').strftime('%Y-%m-%d')
 
 i=0
 
@@ -65,5 +66,6 @@ dailydata=dataset.copy()
 dataset=dailydata.copy()
 dataset.drop(['Open','High','Low','Adj Close','Volume'],axis=1,inplace=True)
 dataset.index=dataset.index.date
-print(dataset)
+dataset.columns = dataset.columns.droplevel(level=0)
+dataset.rename_axis('',axis='columns', inplace=True)
 dataset.T.to_excel(r'DailyPrices.xlsx',index='False')
