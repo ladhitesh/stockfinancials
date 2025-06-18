@@ -12,11 +12,11 @@ on:
         options:
         - dailyprices
       start_date:
-        description: Start Date (mm-dd-yyyy)
+        description: Start Date (dd-mm-yyyy)
         required: true
         type: string
       end_date:
-        description: End Date (mm-dd-yyyy)
+        description: End Date (dd-mm-yyyy)
         required: true
         type: string
   
